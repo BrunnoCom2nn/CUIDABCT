@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio - GEDM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #ff9f00;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .menu {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .item {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff9f00;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            display: none;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .close-button {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Cardápio - GEDM</h1>
+    </div>
+    <div class="menu">
+        <div class="item">
+            <span>Trufas - $3</span>
+            <button class="button" onclick="showPopup('Trufas', 3)">Comprar</button>
+        </div>
+        <div class="item">
+            <span>Brownie - $4</span>
+            <button class="button" onclick="showPopup('Brownie', 4)">Comprar</button>
+        </div>
+        <div class="item">
+            <span>Cremosinhos - $2.5</span>
+            <button class="button" onclick="showPopup('Cremosinhos', 2.5)">Comprar</button>
+        </div>
+        <div class="item">
+            <span>Cookies - $3</span>
+            <button class="button" onclick="showPopup('Cookies', 3)">Comprar</button>
+        </div>
+        <div class="item">
+            <span>Pastilhas - $1</span>
+            <button class="button" onclick="showPopup('Pastilhas', 1)">Comprar</button>
+        </div>
+        <div class="item">
+            <span>Salgado - $3</span>
+            <button class="button" onclick="showPopup('Salgado', 3)">Comprar</button>
+        </div>
+        <div class="item">
+            <span>Pichula - $2</span>
+            <button class="button" onclick="showPopup('Pichula', 2)">Comprar</button>
+        </div>
+        <div class="item">
+            <span>Combinhos</span>
+            <div>
+                <button class="button" onclick="showPopup('Brownie + Pichula', 5.5)">Brownie + Pichula</button>
+                <button class="button" onclick="showPopup('Salgado + Pichula', 5.5)">Salgado + Pichula</button>
+                <button class="button" onclick="showPopup('2x Salgado', 5)">2x Salgado</button>
+            </div>
+        </div>
+    </div>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>PIX: 84988606864</h2>
+            <p>Envie o comprovante para:</p>
+            <a href="https://wa.me/+5584988606864" target="_blank" class="button">WhatsApp</a>
+            <span class="close-button" onclick="hidePopup()">Fechar</span>
+        </div>
+    </div>
+    <script>
+        function showPopup(item, price) {
+            const popup = document.getElementById('popup');
+            const popupContent = popup.querySelector('.popup-content');
+            popupContent.innerHTML = `
+                <h2>${item} - $${price}</h2>
+                <p>Pix: 84988606864 - Brunno Ferreira de Oliveira Santos</p>
+                <p>Envie o comprovante para:</p>
+                <a href="https://wa.me/+5584988606864" target="_blank" class="button">WhatsApp</a>
+                <span class="close-button" onclick="hidePopup()">Fechar</span>
+            `;
+            popup.style.display = 'flex';
+        }
+
+        function hidePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
